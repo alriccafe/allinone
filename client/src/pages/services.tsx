@@ -106,6 +106,13 @@ interface ServiceCardProps {
 }
 
 function ServiceCard({ title, description, icon, href }: ServiceCardProps) {
+  const handleMailto = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const subject = `Inquiry about ${title} service`;
+    const body = `Hello,\n\nI'm interested in your ${title} service. Could you please provide more information?\n\nThank you!`;
+    window.location.href = `mailto:lakshmivijayristo@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+  
   return (
     <Card className="hover:shadow-md transition-shadow">
       <CardHeader className="pb-2">
@@ -118,13 +125,13 @@ function ServiceCard({ title, description, icon, href }: ServiceCardProps) {
       </CardHeader>
       <CardContent>
         <CardDescription className="text-sm text-slate-600 mb-4">{description}</CardDescription>
-        <Button variant="link" className="p-0 h-auto" asChild>
-          <Link href={href}>
-            <div className="text-primary-600 hover:text-primary-700 text-sm font-medium cursor-pointer flex items-center">
-              Learn more
-              <i className="material-icons text-sm ml-1">arrow_forward</i>
-            </div>
-          </Link>
+        <Button 
+          variant="link" 
+          className="p-0 h-auto text-primary-600 hover:text-primary-700 text-sm font-medium cursor-pointer flex items-center"
+          onClick={handleMailto}
+        >
+          Contact us about this service
+          <i className="material-icons text-sm ml-1">mail_outline</i>
         </Button>
       </CardContent>
     </Card>

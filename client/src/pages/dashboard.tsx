@@ -49,12 +49,13 @@ export default function Dashboard() {
                   <h2 className="text-lg font-semibold text-slate-900">Email Campaigns</h2>
                 </div>
                 <p className="text-slate-600 mb-4">Create and send email campaigns to your audience.</p>
-                <Link href="/campaigns">
-                  <a className="inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-800">
-                    View Campaigns
-                    <i className="material-icons text-sm ml-1">arrow_forward</i>
-                  </a>
-                </Link>
+                <button 
+                  onClick={() => window.location.href = "/campaigns"}
+                  className="inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-800"
+                >
+                  View Campaigns
+                  <i className="material-icons text-sm ml-1">arrow_forward</i>
+                </button>
               </div>
               
               {/* Contacts */}
@@ -66,12 +67,13 @@ export default function Dashboard() {
                   <h2 className="text-lg font-semibold text-slate-900">Contacts</h2>
                 </div>
                 <p className="text-slate-600 mb-4">Manage your contact list and audience segments.</p>
-                <Link href="/contacts">
-                  <a className="inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-800">
-                    View Contacts
-                    <i className="material-icons text-sm ml-1">arrow_forward</i>
-                  </a>
-                </Link>
+                <button 
+                  onClick={() => window.location.href = "/contacts"}
+                  className="inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-800"
+                >
+                  View Contacts
+                  <i className="material-icons text-sm ml-1">arrow_forward</i>
+                </button>
               </div>
               
               {/* Templates */}
@@ -83,12 +85,13 @@ export default function Dashboard() {
                   <h2 className="text-lg font-semibold text-slate-900">Email Templates</h2>
                 </div>
                 <p className="text-slate-600 mb-4">Choose from our library of pre-designed email templates.</p>
-                <Link href="/templates">
-                  <a className="inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-800">
-                    View Templates
-                    <i className="material-icons text-sm ml-1">arrow_forward</i>
-                  </a>
-                </Link>
+                <button 
+                  onClick={() => window.location.href = "/templates"}
+                  className="inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-800"
+                >
+                  View Templates
+                  <i className="material-icons text-sm ml-1">arrow_forward</i>
+                </button>
               </div>
               
               {/* Services */}
@@ -100,12 +103,13 @@ export default function Dashboard() {
                   <h2 className="text-lg font-semibold text-slate-900">Our Services</h2>
                 </div>
                 <p className="text-slate-600 mb-4">Learn about all the marketing services we offer.</p>
-                <Link href="/services">
-                  <a className="inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-800">
-                    View Services
-                    <i className="material-icons text-sm ml-1">arrow_forward</i>
-                  </a>
-                </Link>
+                <button 
+                  onClick={() => window.location.href = "/services"}
+                  className="inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-800"
+                >
+                  View Services
+                  <i className="material-icons text-sm ml-1">arrow_forward</i>
+                </button>
               </div>
             </div>
             

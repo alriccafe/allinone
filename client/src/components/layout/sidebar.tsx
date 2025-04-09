@@ -98,6 +98,12 @@ export default function Sidebar() {
               isActive={location === "/services"}
             />
             <SidebarLink
+              icon="mail_outline"
+              label="Contact Us"
+              href="/contact-us"
+              isActive={location === "/contact-us"}
+            />
+            <SidebarLink
               icon="info"
               label="About Us"
               href="/about-us"
