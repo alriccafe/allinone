@@ -70,6 +70,12 @@ export default function Sidebar() {
               href="/"
               isActive={location === "/"}
             />
+            <SidebarLink
+              icon="featured_play_list"
+              label="Services"
+              href="/services"
+              isActive={location === "/services"}
+            />
           </SidebarSection>
 
           <SidebarSection title="Campaigns">

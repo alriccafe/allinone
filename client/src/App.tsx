@@ -8,6 +8,7 @@ import Campaigns from "@/pages/campaigns";
 import Contacts from "@/pages/contacts";
 import Templates from "@/pages/templates";
 import EmailBuilder from "@/pages/email-builder";
+import Services from "@/pages/services";
 import { useEffect } from "react";
 
 function Router() {
@@ -23,6 +24,7 @@ function Router() {
       <Route path="/contacts" component={Contacts} />
       <Route path="/templates" component={Templates} />
       <Route path="/email-builder" component={EmailBuilder} />
+      <Route path="/services" component={Services} />
       <Route component={NotFound} />
     </Switch>
   );
