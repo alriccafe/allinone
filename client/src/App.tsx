@@ -13,7 +13,7 @@ import { useEffect } from "react";
 function Router() {
   // Set page title
   useEffect(() => {
-    document.title = "EmailPro - Marketing Platform";
+    document.title = "AllInOne - Complete Marketing Platform";
   }, []);
 
   return (

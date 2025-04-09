@@ -9,20 +9,26 @@ interface SidebarLinkProps {
 }
 
 function SidebarLink({ icon, label, href, isActive }: SidebarLinkProps) {
+  const [_, navigate] = useLocation();
+  
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate(href);
+  };
+  
   return (
-    <Link href={href}>
-      <a
-        className={cn(
-          "flex items-center text-sm px-3 py-2 rounded-md",
-          isActive
-            ? "bg-primary-700 text-white font-medium"
-            : "text-slate-300 hover:bg-slate-800"
-        )}
-      >
-        <i className="material-icons text-sm mr-3">{icon}</i>
-        <span>{label}</span>
-      </a>
-    </Link>
+    <div
+      onClick={handleClick}
+      className={cn(
+        "flex items-center text-sm px-3 py-2 rounded-md cursor-pointer",
+        isActive
+          ? "bg-primary-700 text-white font-medium"
+          : "text-slate-300 hover:bg-slate-800"
+      )}
+    >
+      <i className="material-icons text-sm mr-3">{icon}</i>
+      <span>{label}</span>
+    </div>
   );
 }
 
@@ -50,9 +56,9 @@ export default function Sidebar() {
       <div className="p-4 flex items-center justify-center border-b border-slate-700">
         <div className="flex items-center space-x-2">
           <div className="h-8 w-8 rounded-md bg-primary-600 flex items-center justify-center">
-            <i className="material-icons text-white text-lg">send</i>
+            <i className="material-icons text-white text-lg">all_inclusive</i>
           </div>
-          <h1 className="text-xl font-bold">EmailPro</h1>
+          <h1 className="text-xl font-bold">AllInOne</h1>
         </div>
       </div>
       <div className="flex-1 overflow-y-auto sidebar-scroll">

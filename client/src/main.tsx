@@ -16,7 +16,7 @@ document.head.appendChild(interFontLink);
 
 // Add meta title
 const metaTitle = document.createElement("title");
-metaTitle.textContent = "EmailPro - Email Marketing Platform";
+metaTitle.textContent = "AllInOne - Complete Marketing Platform";
 document.head.appendChild(metaTitle);
 
 createRoot(document.getElementById("root")!).render(<App />);

@@ -14,9 +14,9 @@ export default function Header({ toggleSidebar }: HeaderProps) {
         <div className="flex items-center md:hidden">
           <div className="flex items-center space-x-2">
             <div className="h-8 w-8 rounded-md bg-primary-600 flex items-center justify-center">
-              <i className="material-icons text-white text-lg">send</i>
+              <i className="material-icons text-white text-lg">all_inclusive</i>
             </div>
-            <h1 className="text-lg font-bold">EmailPro</h1>
+            <h1 className="text-lg font-bold">AllInOne</h1>
           </div>
         </div>
         
