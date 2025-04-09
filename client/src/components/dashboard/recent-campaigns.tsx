@@ -153,7 +153,7 @@ export default function RecentCampaigns() {
       </div>
       <div className="px-6 py-3 bg-slate-50 border-t border-slate-200">
         <Link href="/campaigns">
-          <a className="text-sm text-primary-600 hover:text-primary-700 font-medium">View all campaigns</a>
+          <div className="text-sm text-primary-600 hover:text-primary-700 font-medium cursor-pointer">View all campaigns</div>
         </Link>
       </div>
     </div>

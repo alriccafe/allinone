@@ -169,6 +169,12 @@ export default function Sidebar() {
               href="/integrations"
               isActive={location === "/integrations"}
             />
+            <SidebarLink
+              icon="info"
+              label="About Us"
+              href="/about-us"
+              isActive={location === "/about-us"}
+            />
           </SidebarSection>
         </nav>
       </div>

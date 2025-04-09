@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import Sidebar from "@/components/layout/sidebar";
 import Header from "@/components/layout/header";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -253,12 +253,14 @@ function ServiceCard({ title, description, icon, href }: ServiceCardProps) {
       </CardHeader>
       <CardContent>
         <CardDescription className="text-sm text-slate-600 mb-4">{description}</CardDescription>
-        <Link href={href}>
-          <div className="text-primary-600 hover:text-primary-700 text-sm font-medium cursor-pointer flex items-center">
-            Learn more
-            <i className="material-icons text-sm ml-1">arrow_forward</i>
-          </div>
-        </Link>
+        <Button variant="link" className="p-0 h-auto" asChild>
+          <Link href={href}>
+            <div className="text-primary-600 hover:text-primary-700 text-sm font-medium cursor-pointer flex items-center">
+              Learn more
+              <i className="material-icons text-sm ml-1">arrow_forward</i>
+            </div>
+          </Link>
+        </Button>
       </CardContent>
     </Card>
   );

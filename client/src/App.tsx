@@ -9,6 +9,7 @@ import Contacts from "@/pages/contacts";
 import Templates from "@/pages/templates";
 import EmailBuilder from "@/pages/email-builder";
 import Services from "@/pages/services";
+import AboutUs from "@/pages/about-us";
 import { useEffect } from "react";
 
 function Router() {
@@ -25,6 +26,7 @@ function Router() {
       <Route path="/templates" component={Templates} />
       <Route path="/email-builder" component={EmailBuilder} />
       <Route path="/services" component={Services} />
+      <Route path="/about-us" component={AboutUs} />
       <Route component={NotFound} />
     </Switch>
   );
