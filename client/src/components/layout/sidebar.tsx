@@ -63,54 +63,24 @@ export default function Sidebar() {
       </div>
       <div className="flex-1 overflow-y-auto sidebar-scroll">
         <nav className="p-4 space-y-1">
-          <SidebarSection title="Dashboard">
+          <SidebarSection title="Main">
             <SidebarLink
               icon="dashboard"
-              label="Overview"
+              label="Dashboard"
               href="/"
               isActive={location === "/"}
             />
             <SidebarLink
-              icon="featured_play_list"
-              label="Services"
-              href="/services"
-              isActive={location === "/services"}
-            />
-          </SidebarSection>
-
-          <SidebarSection title="Campaigns">
-            <SidebarLink
               icon="email"
-              label="Email Campaigns"
+              label="Campaigns"
               href="/campaigns"
               isActive={location === "/campaigns"}
             />
             <SidebarLink
-              icon="schedule"
-              label="Scheduled"
-              href="/campaigns?filter=scheduled"
-              isActive={location.startsWith("/campaigns?filter=scheduled")}
-            />
-            <SidebarLink
-              icon="history"
-              label="Campaign History"
-              href="/campaigns?filter=history"
-              isActive={location.startsWith("/campaigns?filter=history")}
-            />
-            <SidebarLink
-              icon="auto_awesome"
-              label="Automations"
-              href="/automations"
-              isActive={location === "/automations"}
-            />
-          </SidebarSection>
-
-          <SidebarSection title="Content">
-            <SidebarLink
-              icon="design_services"
-              label="Email Builder"
-              href="/email-builder"
-              isActive={location === "/email-builder"}
+              icon="people"
+              label="Contacts"
+              href="/contacts"
+              isActive={location === "/contacts"}
             />
             <SidebarLink
               icon="view_quilt"
@@ -120,54 +90,12 @@ export default function Sidebar() {
             />
           </SidebarSection>
 
-          <SidebarSection title="Audience">
+          <SidebarSection title="Info">
             <SidebarLink
-              icon="people"
-              label="Contacts"
-              href="/contacts"
-              isActive={location === "/contacts"}
-            />
-            <SidebarLink
-              icon="segment"
-              label="Segments"
-              href="/segments"
-              isActive={location === "/segments"}
-            />
-            <SidebarLink
-              icon="file_upload"
-              label="Import"
-              href="/import"
-              isActive={location === "/import"}
-            />
-          </SidebarSection>
-
-          <SidebarSection title="Analytics">
-            <SidebarLink
-              icon="analytics"
-              label="Reports"
-              href="/reports"
-              isActive={location === "/reports"}
-            />
-            <SidebarLink
-              icon="science"
-              label="A/B Testing"
-              href="/ab-testing"
-              isActive={location === "/ab-testing"}
-            />
-          </SidebarSection>
-
-          <SidebarSection title="Settings">
-            <SidebarLink
-              icon="settings"
-              label="Account Settings"
-              href="/settings"
-              isActive={location === "/settings"}
-            />
-            <SidebarLink
-              icon="integration_instructions"
-              label="Integrations"
-              href="/integrations"
-              isActive={location === "/integrations"}
+              icon="featured_play_list"
+              label="Services"
+              href="/services"
+              isActive={location === "/services"}
             />
             <SidebarLink
               icon="info"
