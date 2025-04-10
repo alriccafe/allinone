@@ -182,6 +182,18 @@ export default function Contacts() {
               
               <div className="flex flex-wrap gap-2">
                 <Button 
+                  className="inline-flex items-center bg-blue-600 hover:bg-blue-700"
+                  onClick={() => {
+                    const emails = contacts?.map((c: any) => c.email).join(',');
+                    const subject = `Latest Updates from AllInOne Marketing`;
+                    const body = `Hello,\n\nWe hope this email finds you well. We wanted to share our latest updates and offerings with you.\n\nBest regards,\nLakshmi Vijay\nlakshmivijayristo@gmail.com`;
+                    window.location.href = `mailto:${emails}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                  }}
+                >
+                  <Mail className="mr-2 h-4 w-4" />
+                  Send Campaign
+                </Button>
+                <Button 
                   variant="outline" 
                   className="inline-flex items-center"
                 >
@@ -233,6 +245,20 @@ export default function Contacts() {
                     {selectedContacts.length > 0 ? (
                       <>
                         <span className="mr-2">{selectedContacts.length} selected</span>
+                        <Button 
+                          variant="ghost" 
+                          size="sm" 
+                          className="text-blue-500 hover:text-blue-700 p-0 mx-1"
+                          onClick={() => {
+                            const selectedContactData = filteredContacts?.filter((c: any) => selectedContacts.includes(c.id));
+                            const emails = selectedContactData.map((c: any) => c.email).join(',');
+                            const subject = `Hello from AllInOne Marketing`;
+                            const body = `Hello,\n\nI wanted to reach out regarding our marketing services.\n\nBest regards,\nLakshmi Vijay`;
+                            window.location.href = `mailto:${emails}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                          }}
+                        >
+                          Email All
+                        </Button>
                         <Button 
                           variant="ghost" 
                           size="sm" 
@@ -343,6 +369,18 @@ export default function Contacts() {
                             </td>
                             <td className="px-4 py-3 text-right">
                               <div className="flex justify-end space-x-2">
+                                <Button 
+                                  size="sm" 
+                                  variant="ghost"
+                                  className="text-blue-500 hover:text-blue-700"
+                                  onClick={() => {
+                                    const subject = `Hello from AllInOne Marketing`;
+                                    const body = `Hello ${contact.firstName},\n\nI wanted to reach out regarding our marketing services.\n\nBest regards,\nLakshmi Vijay`;
+                                    window.location.href = `mailto:${contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                                  }}
+                                >
+                                  <Mail className="h-4 w-4" />
+                                </Button>
                                 <Button size="sm" variant="ghost">
                                   <Edit className="h-4 w-4" />
                                 </Button>
