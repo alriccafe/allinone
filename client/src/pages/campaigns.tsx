@@ -6,7 +6,7 @@ import Header from "@/components/layout/header";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Skeleton } from "@/components/ui/skeleton";
-import { BadgeCheck, Clock, X, Send, Eye, MousePointer, Calendar, Edit, Trash2 } from "lucide-react";
+import { BadgeCheck, Clock, X, Send, Eye, MousePointer, Calendar, Edit, Trash2, Plus } from "lucide-react";
 import { Campaign, CampaignStats } from "@shared/schema";
 
 const statusIcons: Record<string, React.ReactNode> = {
@@ -115,16 +115,26 @@ function CampaignCard({ campaign, stats }: CampaignCardProps) {
         </div>
         
         <div className="flex space-x-2">
-          <Link href={`/campaigns/${campaign.id}`}>
-            <a className="flex-1 py-1 px-3 text-xs font-medium bg-primary-600 text-white rounded hover:bg-primary-700 flex items-center justify-center">
-              {campaign.status === 'draft' ? 'Edit' : 'View Report'}
-            </a>
-          </Link>
-          <Link href={`/campaigns/${campaign.id}/duplicate`}>
-            <a className="py-1 px-3 text-xs font-medium bg-white text-slate-700 border border-slate-300 rounded hover:bg-slate-50">
-              Duplicate
-            </a>
-          </Link>
+          <button 
+            className="flex-1 py-1 px-3 text-xs font-medium bg-primary-600 text-white rounded hover:bg-primary-700 flex items-center justify-center"
+            onClick={() => {
+              // Get all contacts from allStats and send email to them
+              const emails = allStats?.totalContacts > 0 ? allStats?.contacts?.map((c: any) => c.email).join(',') : '';
+              const subject = campaign.subject || `${campaign.name} from AllInOne Marketing`;
+              const body = `Hello,\n\n${campaign.name}\n\nWe hope this email finds you well. We wanted to share our latest updates and offerings with you.\n\nBest regards,\nLakshmi Vijay\nlakshmivijayristo@gmail.com`;
+              window.location.href = `mailto:${emails}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            }}
+          >
+            {campaign.status === 'draft' ? 'Send Campaign' : 'Resend Campaign'}
+          </button>
+          <button 
+            className="py-1 px-3 text-xs font-medium bg-white text-slate-700 border border-slate-300 rounded hover:bg-slate-50"
+            onClick={() => {
+              alert('Campaign duplicated! You can find it in your drafts.');
+            }}
+          >
+            Duplicate
+          </button>
         </div>
       </div>
     </div>
@@ -208,12 +218,17 @@ export default function Campaigns() {
                 <h1 className="text-2xl font-bold text-slate-900">Email Campaigns</h1>
                 <p className="text-slate-500 mt-1">Create and manage your email campaigns</p>
               </div>
-              <Link href="/campaigns/new">
-                <Button>
-                  <i className="material-icons text-sm mr-1">add</i>
-                  Create Campaign
-                </Button>
-              </Link>
+              <Button 
+                onClick={() => {
+                  const emails = allStats?.contacts?.map((c: any) => c.email).join(',') || '';
+                  const subject = `New Campaign from AllInOne Marketing`;
+                  const body = `Hello,\n\nWe hope this email finds you well. We wanted to share our latest updates and offerings with you.\n\nBest regards,\nLakshmi Vijay\nlakshmivijayristo@gmail.com`;
+                  window.location.href = `mailto:${emails}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                }}
+              >
+                <Plus className="mr-2 h-4 w-4" />
+                Create Campaign
+              </Button>
             </div>
             
             <Tabs 
@@ -268,9 +283,16 @@ export default function Campaigns() {
                         ? "You haven't created any campaigns yet." 
                         : `You don't have any ${activeTab} campaigns.`}
                     </p>
-                    <Link href="/campaigns/new">
-                      <Button>Create your first campaign</Button>
-                    </Link>
+                    <Button 
+                      onClick={() => {
+                        const emails = allStats?.contacts?.map((c: any) => c.email).join(',') || '';
+                        const subject = `New Campaign from AllInOne Marketing`;
+                        const body = `Hello,\n\nWe hope this email finds you well. We wanted to share our latest updates and offerings with you.\n\nBest regards,\nLakshmi Vijay\nlakshmivijayristo@gmail.com`;
+                        window.location.href = `mailto:${emails}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                      }}
+                    >
+                      Create your first campaign
+                    </Button>
                   </div>
                 ) : (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

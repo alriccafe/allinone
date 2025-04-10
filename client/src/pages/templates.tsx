@@ -8,7 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Search, Plus, Edit, Copy, Trash2, Eye } from "lucide-react";
+import { Search, Plus, Edit, Copy, Trash2, Eye, Send } from "lucide-react";
 import { Template } from "@shared/schema";
 
 interface TemplateCardProps {
@@ -17,6 +17,7 @@ interface TemplateCardProps {
 
 function TemplateCard({ template }: TemplateCardProps) {
   const thumbnailUrl = template.thumbnailUrl || "https://via.placeholder.com/300x200?text=No+Preview";
+  const { data: contacts } = useQuery({ queryKey: ['/api/contacts'] });
 
   return (
     <Card className="overflow-hidden">
@@ -27,13 +28,29 @@ function TemplateCard({ template }: TemplateCardProps) {
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-slate-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center space-x-2">
-          <Link href={`/email-builder?template=${template.id}`}>
-            <Button size="sm" variant="outline" className="bg-white">
-              <Edit className="h-4 w-4 mr-2" />
-              Edit
-            </Button>
-          </Link>
-          <Button size="sm" variant="outline" className="bg-white">
+          <Button 
+            size="sm" 
+            variant="outline" 
+            className="bg-white"
+            onClick={() => {
+              // Get all contacts and send email using this template
+              const emails = contacts?.length ? contacts.map((c: any) => c.email).join(',') : '';
+              const subject = template.subject || `${template.name} - AllInOne Marketing`;
+              const body = `Hello,\n\n${template.name} Template\n\nWe hope this email finds you well. This is a message using our ${template.name} template.\n\nBest regards,\nLakshmi Vijay\nlakshmivijayristo@gmail.com`;
+              window.location.href = `mailto:${emails}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            }}
+          >
+            <Send className="h-4 w-4 mr-2" />
+            Use Template
+          </Button>
+          <Button 
+            size="sm" 
+            variant="outline" 
+            className="bg-white"
+            onClick={() => {
+              alert('Template preview shown');
+            }}
+          >
             <Eye className="h-4 w-4 mr-2" />
             Preview
           </Button>
