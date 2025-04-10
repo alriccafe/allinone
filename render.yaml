@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: allinone
+    env: node
+    buildCommand: npm install
+    startCommand: npm run build && npm start
+    nodeVersion: 18.x
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_OPTIONS
+        value: --max-old-space-size=4096
+    plan: starter
+    scaling:
+      minInstances: 1
+      maxInstances: 1
+      targetMemoryPercent: 80
+    healthCheckPath: /
+    autoDeploy: true
+    branch: master
+    buildFilter:
+      paths:
+        - package.json
+        - package-lock.json
+        - server/**
+        - client/**
+        - shared/**
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: no-cache
