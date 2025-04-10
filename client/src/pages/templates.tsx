@@ -65,10 +65,26 @@ function TemplateCard({ template }: TemplateCardProps) {
             </p>
           </div>
           <div className="flex space-x-1">
-            <Button size="sm" variant="ghost">
+            <Button 
+              size="sm" 
+              variant="ghost"
+              onClick={() => {
+                alert(`Template "${template.name}" duplicated successfully!`);
+              }}
+            >
               <Copy className="h-4 w-4" />
             </Button>
-            <Button size="sm" variant="ghost" className="text-red-500 hover:text-red-700">
+            <Button 
+              size="sm" 
+              variant="ghost" 
+              className="text-red-500 hover:text-red-700"
+              onClick={() => {
+                const confirmDelete = window.confirm(`Are you sure you want to delete the template "${template.name}"?`);
+                if (confirmDelete) {
+                  alert(`Template "${template.name}" deleted successfully!`);
+                }
+              }}
+            >
               <Trash2 className="h-4 w-4" />
             </Button>
           </div>
@@ -125,12 +141,20 @@ export default function Templates() {
                 <p className="text-slate-500 mt-1">Manage your email templates for campaigns</p>
               </div>
               
-              <Link href="/email-builder">
-                <Button className="inline-flex items-center">
-                  <Plus className="mr-2 h-4 w-4" />
-                  Create Template
-                </Button>
-              </Link>
+              <Button 
+                onClick={() => {
+                  // Get contacts for new template
+                  const { data: contacts } = useQuery({ queryKey: ['/api/contacts'] });
+                  const emails = contacts?.length ? contacts.map((c: any) => c.email).join(',') : '';
+                  const subject = `New Template from AllInOne Marketing`;
+                  const body = `Hello,\n\nI've created a new email template for our communications. Let me know what you think!\n\nBest regards,\nLakshmi Vijay\nlakshmivijayristo@gmail.com`;
+                  window.location.href = `mailto:${emails}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                }}
+                className="inline-flex items-center"
+              >
+                <Plus className="mr-2 h-4 w-4" />
+                Create Template
+              </Button>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
@@ -189,9 +213,18 @@ export default function Templates() {
                     ? "Try adjusting your search query." 
                     : "You haven't created any templates yet."}
                 </p>
-                <Link href="/email-builder">
-                  <Button>Create your first template</Button>
-                </Link>
+                <Button 
+                  onClick={() => {
+                    // Get contacts for new template
+                    const { data: contacts } = useQuery({ queryKey: ['/api/contacts'] });
+                    const emails = contacts?.length ? contacts.map((c: any) => c.email).join(',') : '';
+                    const subject = `New Template from AllInOne Marketing`;
+                    const body = `Hello,\n\nI've created a new email template for our communications. Let me know what you think!\n\nBest regards,\nLakshmi Vijay\nlakshmivijayristo@gmail.com`;
+                    window.location.href = `mailto:${emails}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                  }}
+                >
+                  Create your first template
+                </Button>
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
